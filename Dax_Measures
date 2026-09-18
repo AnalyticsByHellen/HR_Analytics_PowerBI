@@ -1,0 +1,122 @@
+DAX MEASURES
+
+DEFINE
+
+MEASURE 'HR_Analytics-4 (2)'[Total Employees] =
+COUNTROWS('HR_Analytics-4 (2)')
+
+MEASURE 'HR_Analytics-4 (2)'[Employees Left] =
+CALCULATE(
+    COUNTROWS('HR_Analytics-4 (2)'),
+    'HR_Analytics-4 (2)'[Attrition]="Yes"
+)
+
+MEASURE 'HR_Analytics-4 (2)'[Employees Active] =
+CALCULATE(
+    COUNTROWS('HR_Analytics-4 (2)'),
+    'HR_Analytics-4 (2)'[Attrition]="No"
+)
+
+MEASURE 'HR_Analytics-4 (2)'[Attrition Rate] =
+DIVIDE(
+    [Employees Left],
+    [Total Employees],
+    0
+)
+
+MEASURE 'HR_Analytics-4 (2)'[Average Age] =
+AVERAGE('HR_Analytics-4 (2)'[Age])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Monthly Income] =
+AVERAGE('HR_Analytics-4 (2)'[MonthlyIncome])
+
+MEASURE 'HR_Analytics-4 (2)'[Total Monthly Income] =
+SUM('HR_Analytics-4 (2)'[MonthlyIncome])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Daily Rate] =
+AVERAGE('HR_Analytics-4 (2)'[DailyRate])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Hourly Rate] =
+AVERAGE('HR_Analytics-4 (2)'[HourlyRate])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Distance From Home] =
+AVERAGE('HR_Analytics-4 (2)'[DistanceFromHome(KM)])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Job Satisfaction] =
+AVERAGE('HR_Analytics-4 (2)'[JobSatisfaction])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Environment Satisfaction] =
+AVERAGE('HR_Analytics-4 (2)'[EnvironmentSatisfaction])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Relationship Satisfaction] =
+AVERAGE('HR_Analytics-4 (2)'[RelationshipSatisfaction])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Work Life Balance] =
+AVERAGE('HR_Analytics-4 (2)'[WorkLifeBalance])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Job Involvement] =
+AVERAGE('HR_Analytics-4 (2)'[JobInvolvement])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Salary Hike %] =
+AVERAGE('HR_Analytics-4 (2)'[SalaryHike %])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Performance Rating] =
+AVERAGE('HR_Analytics-4 (2)'[PerformanceRating])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Total Experience] =
+AVERAGE('HR_Analytics-4 (2)'[TotalExperience(Years)])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Years at Company] =
+AVERAGE('HR_Analytics-4 (2)'[YearsatCompany])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Years in Current Role] =
+AVERAGE('HR_Analytics-4 (2)'[YearsinCurrentRole])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Years Since Promotion] =
+AVERAGE('HR_Analytics-4 (2)'[YearsSincePromotion])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Years With Current Manager] =
+AVERAGE('HR_Analytics-4 (2)'[YearsWithCurrManager])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Training Last Year] =
+AVERAGE('HR_Analytics-4 (2)'[TrainingsLastYear])
+
+MEASURE 'HR_Analytics-4 (2)'[Average Stock Option Level] =
+AVERAGE('HR_Analytics-4 (2)'[StockOptionLevel])
+
+EVALUATE
+
+SUMMARIZECOLUMNS(
+
+"Total Employees",[Total Employees],
+"Employees Left",[Employees Left],
+"Employees Active",[Employees Active],
+"Attrition Rate",[Attrition Rate],
+
+"Average Age",[Average Age],
+"Average Monthly Income",[Average Monthly Income],
+"Total Monthly Income",[Total Monthly Income],
+
+"Average Daily Rate",[Average Daily Rate],
+"Average Hourly Rate",[Average Hourly Rate],
+"Average Distance From Home",[Average Distance From Home],
+
+"Average Job Satisfaction",[Average Job Satisfaction],
+"Average Environment Satisfaction",[Average Environment Satisfaction],
+"Average Relationship Satisfaction",[Average Relationship Satisfaction],
+"Average Work Life Balance",[Average Work Life Balance],
+
+"Average Job Involvement",[Average Job Involvement],
+"Average Salary Hike %",[Average Salary Hike %],
+"Average Performance Rating",[Average Performance Rating],
+
+"Average Total Experience",[Average Total Experience],
+"Average Years at Company",[Average Years at Company],
+"Average Years in Current Role",[Average Years in Current Role],
+"Average Years Since Promotion",[Average Years Since Promotion],
+"Average Years With Current Manager",[Average Years With Current Manager],
+
+"Average Training Last Year",[Average Training Last Year],
+"Average Stock Option Level",[Average Stock Option Level]
+
+)
